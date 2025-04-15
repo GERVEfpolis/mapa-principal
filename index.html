@@ -148,9 +148,13 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
-        var overlaysTree = [
-            {label: "Densidade de Kernel", layer: layer_DensidadedeKernel_1},
-            {label: "OpenStreetMap", layer: layer_OpenStreetMap_0},]
+        var overlaysTree = {
+        label: 'Camadas',
+        children: [
+            { label: 'OpenStreetMap', layer: osmLayer },
+            { label: 'Densidade de Kernel', layer: densidadeKernelLayer }
+        ]
+    };
 var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
