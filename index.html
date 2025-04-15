@@ -148,8 +148,6 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
-		<script>
-    // Define as camadas no controle em ordem desejada
     var overlaysTree = {
         label: 'Camadas',
         children: [
@@ -157,31 +155,17 @@
             { label: 'Densidade de Kernel', layer: densidadeKernelLayer }
         ]
     };
-
-    // Cria o controle de camadas com árvore
-    var lay = L.control.layers.tree(null, overlaysTree, {
+var lay = L.control.layers.tree(null, overlaysTree, {
         collapsed: false
-        // Outras opções podem ser descomentadas se desejar
-        // namedToggle: true,
-        // selectorBack: false,
-        // closedSymbol: '&#8862; &#x1f5c0;',
-        // openedSymbol: '&#8863; &#x1f5c1;',
-        // collapseAll: 'Collapse all',
-        // expandAll: 'Expand all',
     });
     lay.addTo(map);
 
-    // Define limites para o mapa (caso necessário)
     setBounds();
-
-    // Estende o ImageOverlay para obter limites
     L.ImageOverlay.include({
         getBounds: function () {
             return this._bounds;
         }
     });
-
-    // Adiciona link ao lado de "OpenStreetMap" no controle lateral
     function addLegendLink() {
         var layerControlItems = document.querySelectorAll('.leaflet-control-layers-selector + span');
         layerControlItems.forEach(function (item) {
@@ -196,8 +180,6 @@
         });
     }
     addLegendLink();
-
-    // Adiciona imagem de legenda abaixo do controle de camadas
     var legendImg = document.createElement('img');
     legendImg.src = 'Legenda.png'; // Substitua pelo caminho correto da imagem
     legendImg.style.marginTop = '5px';
@@ -207,4 +189,3 @@
     if (layerControl) {
         layerControl.appendChild(legendImg);
     }
-</script>
